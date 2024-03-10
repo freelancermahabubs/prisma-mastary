@@ -1,4 +1,4 @@
-import {PrismaClient} from "@prisma/client";
+import {PrismaClient, UserRole} from "@prisma/client";
 
 const prisma = new PrismaClient();
 const main = async () => {
@@ -11,25 +11,13 @@ const main = async () => {
   //     },
   //   });
 
-  const createMany = await prisma.post.createMany({
-    data: [
-      {
-        title: "This is Title1",
-        content: "This is Content..1",
-        authorName: "Mahabub1",
-      },
-      {
-        title: "This is Title2",
-        content: "This is Content..2",
-        authorName: "Mahabub2",
-      },
-      {
-        title: "This is Title3",
-        content: "This is Content..3",
-        authorName: "Mahabub3",
-      },
-    ],
-  });
-  console.log(createMany)
+const createUser = await prisma.user.create({
+  data: {
+    username: "user3",
+    email: "user3@ph.com",
+    role: UserRole.user
+  }
+})
+console.log(createUser)
 };
 main();
