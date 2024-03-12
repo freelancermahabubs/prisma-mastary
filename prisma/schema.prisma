@@ -31,12 +31,12 @@ model User {
   id       Int      @id @default(autoincrement())
   username String   @unique
   email    String
-  age      Int @default(0)
+  age      Int      @default(0)
   role     UserRole @default(user)
   profile  Profile? // one to one relation
   Post     Post[] // one to many relations
 
-  @@map("('users)")
+  @@map("(users)")
 }
 
 model Profile {
